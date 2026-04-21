@@ -1,0 +1,31 @@
+<table class="result-table">
+  <thead>
+    <tr>
+      <th style="width:60px;">No.</th>
+      <th style="width:50px;"></th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Gender</th>
+      <th>Date of birth</th>
+      <th>Nationality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of passengers; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <button type="button" class="edit-icon" title="Edit" (click)="onEdit(i)">✏️</button>
+      </td>
+      <td>{{ p.firstName }}</td>
+      <td>{{ p.lastName }}</td>
+      <td>{{ p.gender }}</td>
+      <td>{{ p.dateOfBirth }}</td>
+      <td>{{ p.nationality }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="text-align:right; margin-top:12px;">
+  <span style="margin-right:8px;">File &gt;&gt;</span>
+  <a class="file-link" (click)="onDownloadOriginal()">{{ fileName }}</a>
+</div>

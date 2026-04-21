@@ -110,4 +110,4 @@ mvn test
 - Form: validate แบบเดียวกับ API → Save อัปเดต row ในตาราง / Clear เคลียร์ form
 - **File >> Passenger_XXX.xlsx** (ใต้ตาราง): download ไฟล์**ต้นฉบับ**ที่ upload มา
 - **Save Excel** (ปุ่มล่างซ้าย): backend generate ไฟล์ใหม่ด้วย POI จากข้อมูลปัจจุบัน (สะท้อนการแก้ไข)
-- **Cancel**: กลับไปหน้า Initial# somapa-it-exam
+- **Cancel**: กลับไปหน้า Initial

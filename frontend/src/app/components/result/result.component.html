@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Result</h2>
+
+  <app-passenger-form
+    [passenger]="editing"
+    (save)="onFormSave($event)">
+  </app-passenger-form>
+
+  <app-passenger-table
+    [passengers]="passengers"
+    [fileName]="fileName"
+    [flightNo]="flightNo"
+    [originalFile]="originalFile"
+    (edit)="onEditRow($event)">
+  </app-passenger-table>
+
+  <div class="toolbar">
+    <button type="button" class="btn-primary" (click)="onSaveExcel()">Save Excel</button>
+    <button type="button" class="btn-secondary" (click)="onCancel()">Cancel</button>
+  </div>
+</div>

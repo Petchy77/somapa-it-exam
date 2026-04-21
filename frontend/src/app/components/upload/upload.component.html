@@ -1,0 +1,63 @@
+<div class="upload-wrap" [class.has-error]="rowErrors.length > 0 || hasBackendError || fileTooLarge">
+  <h2>Initial Page</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+    <div class="upload-row">
+      <!-- Flight no -->
+      <div class="field-block">
+        <div class="field-line">
+          <label for="flightNo" class="field-label">Flight no <span class="required">*</span></label>
+          <input
+            id="flightNo"
+            type="text"
+            class="field-input flight-input"
+            formControlName="flightNo"
+            [class.invalid]="showFlightNoRequired() || showFlightNoInvalid()"
+            autocomplete="off" />
+        </div>
+        <div class="field-error" *ngIf="showFlightNoRequired()">This field is required</div>
+        <div class="field-error" *ngIf="showFlightNoInvalid()">Invalid flight no format</div>
+      </div>
+
+      <!-- Excel file -->
+      <div class="field-block file-block">
+        <div class="field-line">
+          <label class="field-label">Excel file <span class="required">*</span></label>
+          <div class="file-picker" [class.invalid]="showFileRequired()">
+            <input
+              type="text"
+              class="file-name-input"
+              [value]="selectedFile?.name || ''"
+              readonly
+              (click)="hiddenFileInput.click()" />
+            <button type="button" class="btn-browse" (click)="hiddenFileInput.click()">Browse</button>
+            <input
+              #hiddenFileInput
+              type="file"
+              accept=".xlsx"
+              class="hidden-file"
+              (change)="onFileSelected($event)" />
+          </div>
+        </div>
+        <div class="field-error" *ngIf="showFileRequired()">This field is required</div>
+        <div class="field-error" *ngIf="fileTooLarge">File size must be less than 1 MB</div>
+      </div>
+    </div>
+
+    <!-- Per-row backend errors -->
+    <div *ngIf="rowErrors.length > 0" class="row-errors">
+      <div class="field-error" *ngFor="let err of rowErrors">
+        Row {{ err.row }} Invalid {{ err.invalidColumns.join(', ') }}
+      </div>
+    </div>
+
+    <div class="field-error" *ngIf="hasBackendError && serverMessage">
+      {{ serverMessage }}
+    </div>
+
+    <div class="toolbar">
+      <button type="submit" class="btn-primary">Save</button>
+      <button type="button" class="btn-secondary" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

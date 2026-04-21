@@ -1,0 +1,106 @@
+# =============================================================
+# Default: detect text files and normalise line endings
+# =============================================================
+* text=auto eol=lf
+
+# =============================================================
+# Source code (text, LF on checkout)
+# =============================================================
+*.java       text diff=java
+*.kt         text diff=kotlin
+*.groovy     text
+*.scala      text
+
+*.ts         text
+*.tsx        text
+*.js         text
+*.jsx        text
+*.mjs        text
+*.cjs        text
+
+*.html       text diff=html
+*.css        text diff=css
+*.scss       text
+*.sass       text
+*.less       text
+
+*.json       text
+*.xml        text
+*.yml        text
+*.yaml       text
+*.properties text
+*.md         text diff=markdown
+*.txt        text
+
+# =============================================================
+# Build / tooling configs
+# =============================================================
+pom.xml              text
+*.gradle             text
+*.gradle.kts         text
+package.json         text
+package-lock.json    text
+yarn.lock            text
+pnpm-lock.yaml       text
+angular.json         text
+tsconfig*.json       text
+.editorconfig        text
+.gitignore           text
+.gitattributes       text
+
+# =============================================================
+# Shell / batch: force correct line endings
+# =============================================================
+*.sh    text eol=lf
+*.bash  text eol=lf
+mvnw    text eol=lf
+gradlew text eol=lf
+
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# =============================================================
+# Binary — never touch line endings / no diff
+# =============================================================
+*.jar    binary
+*.war    binary
+*.ear    binary
+*.class  binary
+*.zip    binary
+*.tar    binary
+*.tar.gz binary
+*.tgz    binary
+*.gz     binary
+*.rar    binary
+*.7z     binary
+
+*.xlsx   binary
+*.xls    binary
+*.docx   binary
+*.doc    binary
+*.pdf    binary
+
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.webp   binary
+*.bmp    binary
+
+# SVG is text (XML) so diffs are meaningful
+*.svg    text
+
+*.ttf    binary
+*.otf    binary
+*.woff   binary
+*.woff2  binary
+*.eot    binary
+
+# =============================================================
+# GitHub linguist hints
+# =============================================================
+frontend/.angular/**    linguist-generated=true
+backend/target/**       linguist-generated=true
+**/node_modules/**      linguist-vendored=true

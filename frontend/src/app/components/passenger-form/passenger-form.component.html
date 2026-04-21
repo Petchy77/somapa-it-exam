@@ -1,0 +1,85 @@
+<form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+  <div class="row-pair">
+    <div class="field">
+      <div class="field-row">
+        <label for="firstName">First name <span class="required">*</span></label>
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          [class.invalid]="showErr('firstName','required') || showErr('firstName','invalid')" />
+      </div>
+      <div class="error" *ngIf="showErr('firstName','required') || showErr('firstName','invalid')">
+        Invalid First name
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-row">
+        <label for="lastName">Last name <span class="required">*</span></label>
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          [class.invalid]="showErr('lastName','required') || showErr('lastName','invalid')" />
+      </div>
+      <div class="error" *ngIf="showErr('lastName','required') || showErr('lastName','invalid')">
+        Invalid Last name
+      </div>
+    </div>
+  </div>
+
+  <div class="row-pair">
+    <div class="field">
+      <div class="field-row">
+        <label for="gender">Gender <span class="required">*</span></label>
+        <select
+          id="gender"
+          formControlName="gender"
+          [class.invalid]="showErr('gender','required') || showErr('gender','invalid')">
+          <option *ngFor="let g of genderOptions" [value]="g">{{ g }}</option>
+        </select>
+      </div>
+      <div class="error" *ngIf="showErr('gender','required') || showErr('gender','invalid')">
+        Invalid Gender
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-row">
+        <label for="dateOfBirth">Date of birth <span class="required">*</span></label>
+        <input
+          id="dateOfBirth"
+          type="date"
+          placeholder="dd/MM/yyyy"
+          formControlName="dateOfBirth"
+          [class.invalid]="showErr('dateOfBirth','required') || showErr('dateOfBirth','invalid')" />
+      </div>
+      <div class="error" *ngIf="showErr('dateOfBirth','required') || showErr('dateOfBirth','invalid')">
+        Invalid Date of birth
+      </div>
+    </div>
+  </div>
+
+  <div class="row-pair">
+    <div class="field">
+      <div class="field-row">
+        <label for="nationality">Nationality <span class="required">*</span></label>
+        <input
+          id="nationality"
+          type="text"
+          formControlName="nationality"
+          [class.invalid]="showErr('nationality','required') || showErr('nationality','invalid')" />
+      </div>
+      <div class="error" *ngIf="showErr('nationality','required') || showErr('nationality','invalid')">
+        Invalid Nationality
+      </div>
+    </div>
+    <div></div>
+  </div>
+
+  <div class="toolbar">
+    <button type="submit" class="btn-primary" [disabled]="locked">Save</button>
+    <button type="button" class="btn-secondary" (click)="onClear()">Clear</button>
+  </div>
+</form>
