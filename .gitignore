@@ -104,9 +104,9 @@ out-tsc/
 bazel-out/
 
 # Angular / tooling cache
-.angular/cache/
+.angular/
 .sass-cache/
-.nx/cache
+.nx/
 .parcel-cache/
 .eslintcache
 .stylelintcache
